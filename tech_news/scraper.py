@@ -1,5 +1,5 @@
 # Requisito 1
-def fetch(url):
+def fetch(url): # initial commit
     """Seu código deve vir aqui"""
 
 
