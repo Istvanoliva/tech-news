@@ -4,10 +4,8 @@ from datetime import datetime
 
 # Requisito 6
 def search_by_title(title):
-    return [
-        (news["title"], news["url"])
-        for news in search_news({"title": {"$regex": title, "$options": "i"}})
-    ]
+    news_list = search_news({"title": {"$regex": title, "$options": "i"}})
+    return [(news["title"], news["url"]) for news in news_list]
 
 
 # Requisito 7
