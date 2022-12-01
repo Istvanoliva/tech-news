@@ -57,7 +57,7 @@ def get_tech_news(amount):
     while len(tech_news) <= amount:
         data = fetch(url)
         news_urls = scrape_novidades(data)
-        
+
         for news_url in news_urls:
             news = scrape_noticia(fetch(news_url))
             tech_news.append(news)
