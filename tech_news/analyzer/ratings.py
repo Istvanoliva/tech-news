@@ -5,7 +5,7 @@ from tech_news.analyzer.helpers import categorize_list
 # Requisito 10
 def top_5_news():
     news_list = get_collection()
-    
+
     result = (
         news_list.find({})
         .sort([("comments_count", -1), ("title", 1)])
@@ -17,4 +17,11 @@ def top_5_news():
 
 # Requisito 11
 def top_5_categories():
-    """Seu código deve vir aqui"""
+    news_list = get_collection()
+
+    ranking_categories = [
+        {"$group": {"_id": "$category", "total": {"$sum": 1}}},
+        {"$sort": {"total": -1, "_id": 1}},
+        {"$limit": 5},
+    ]
+
