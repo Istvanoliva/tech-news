@@ -17,11 +17,4 @@ def top_5_news():
 
 # Requisito 11
 def top_5_categories():
-    news_list = get_collection()
-
-    ranking_categories = [
-        {"$group": {"_id": "$category", "total": {"$sum": 1}}},
-        {"$sort": {"total": -1, "_id": 1}},
-        {"$limit": 5},
-    ]
-
+    pass
