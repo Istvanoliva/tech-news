@@ -1,18 +1,14 @@
-from tech_news.database import get_collection, find_news
-from tech_news.analyzer.helpers import categorize_list
+from tech_news.database import find_news
 
 
 # Requisito 10
 def top_5_news():
-    news_list = get_collection()
+    news_list = find_news()
 
-    result = (
-        news_list.find({})
-        .sort([("comments_count", -1), ("title", 1)])
-        .limit(5)
-    )
+    top_5_news = sorted(
+        news_list, key=lambda news: (-news["comments_count"], news["title"]))
 
-    return categorize_list(result)
+    return [(news["title"], news["url"]) for news in top_5_news[:5]]
 
 
 # Requisito 11
